@@ -1,0 +1,373 @@
+<html>
+<head>
+<title>Pineapple Pen</title>
+<style>
+body {
+width: 320;
+height: 430;
+margin: 0;
+}
+.background {
+background: url("./assets/background.png");
+width: 320;
+height: 430;
+position: absolute;
+top: 0;
+left: 0;
+z-index: -1;
+}
+.board {
+width: 300px;
+height: 320px;
+border: 2px solid black;
+margin: 5;
+}
+#fruit {
+display: block;
+position: absolute;
+top: 100px;
+left: 130px;
+width: 60px;
+height: 60px;
+background: lime;
+border-radius: 28px;
+z-index: 1;
+}
+#pen {
+display: block;
+position: absolute;
+top: 350px;
+left: 155px;
+width: 10px;
+height: 80px;
+background: red;
+z-index: 1
+}
+.gameplay-title {
+position: absolute;
+font: 53px solid black;
+top: 0px;
+left: 6px;
+height: 60;
+z-index: 1;
+}
+.home-title {
+position: absolute;
+font: 53px solid black;
+top: 0px;
+left: 6px;
+height: 60;
+}
+.home-title:before, .home-title:after {
+position: absolute;
+width: auto;
+height: auto;
+bottom: 0px;
+left: 0px;
+transform: scaleY(-1);
+transform-origin: bottom;
+content: "Pineapple Pen";
+background: linear-gradient(transparent 40%, black);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+#shader {
+position: fixed;
+top: 0px;
+left: 0px;
+width: 320;
+height: 430;
+background: rgba(0, 0, 0, 0.3);
+z-index: 3;
+opacity: 0;
+display: none;
+}
+#notification {
+position: fixed;
+top: 80px;
+width: 320;
+text-align: center;
+font: 80px solid;
+line-height: 60px;
+color: red;
+z-index: 3;
+}
+.home {
+width: 320;
+height: 430;
+display: block;
+position: absolute;
+top: 0px;
+left: 0px;
+background: url("./assets/background.png");
+z-index: 1;
+transition: opacity 0.3s linear;
+}
+.title-high {
+}
+#title-high {
+}
+#instruction {
+position: absolute;
+top: 250px;
+left: 120px;
+font-family: sans-serif;
+font-size: 25px;
+text-align: center;
+}
+@keyframes fade {
+    0% {opacity: 1}
+    85% {opacity: 1}
+    100% {opacity: 0}
+}
+#fruitpopup {
+position: absolute;
+top: 10;
+left: 150;
+z-index: 2;
+animation-name: fade;
+animation-duration: 1s;
+color: black;
+font-size: 15px;
+}
+#volume {
+position: absolute;
+top: 374;
+left: 265;
+width: 50;
+height: 50;
+z-index: 2;
+}
+.volumeMenu {
+position: absolute;
+top: 0;
+left: 0;
+width: 320;
+height: 430;
+z-index: 3;
+background: url("./assets/background.png");
+opacity: 0;
+display: none
+}
+#music {
+
+}
+#sfx {
+
+}
+.back {
+top: 5;
+left: 5;
+width: 50;
+height: 50;
+z-index: 2;
+}
+#fps {
+position: absolute;
+top: 400;
+left: 10;
+}
+#settings {
+position: absolute;
+top: 324;
+left: 5;
+width: 50;
+height: 50;
+z-index: 2;
+display: none;
+}
+.settingsMenu {
+position: absolute;
+top: 0;
+left: 0;
+width: 320;
+height: 430;
+z-index: 3;
+background: url("./assets/background.png");
+opacity: 0;
+display: none
+}
+#shop {
+position: absolute;
+top: 374;
+left: 5;
+width: 50;
+height: 50;
+z-index: 2;
+border-radius: 20px;
+}
+.shopMenu {
+position: absolute;
+top: 430px;
+left: 0;
+width: 320;
+height: 100%;
+z-index: 3;
+background: url("./assets/background.png");
+opacity: 0;
+display: none;
+transition: top 1s ease;
+overflow-y: scroll;
+}
+.shopEntry {
+background: gray;
+border-radius: 20px;
+float: left;
+margin-top: 5px;
+margin-left: 10px;
+}
+.shopEntryImage {
+margin-left: auto;
+margin-right: auto;
+margin-top: 5px;
+display: block;
+}
+#loadbar {
+z-index: 4;
+position: absolute;
+width: 100;
+height: 0;
+top: 180;
+left: 110;
+background: url("./assets/pineapple.png");
+background-size: cover;
+background-position: bottom;
+transition: height 0.5s linear, top 0.5s linear;
+}
+#loadbarbg {
+z-index: 3;
+position: absolute;
+width: 100;
+height: 100;
+top: 80;
+left: 110;
+background: url("./assets/pineapple_gray.png");
+background-size: cover;
+}
+#loading {
+background: url("./assets/background.png");
+width: 320;
+height: 430;
+position: absolute;
+top: 0;
+left: 0;
+z-index: 2;
+transition: opacity 0.3s linear;
+}
+#pause {
+position: absolute;
+top: 374;
+left: 265;
+width: 50;
+height: 50;
+}
+.pauseMenu {
+position: absolute;
+top: 0;
+left: 0;
+width: 320;
+height: 430;
+z-index: 3;
+background: rgba(0, 0, 0, 0.08);
+opacity: 0;
+display: none
+}
+.pauseMenu .back {
+position: absolute;
+top: 374;
+left: 81;
+}
+.pauseMenu .exit {
+position: absolute;
+width: 50;
+height: 50;
+top: 374;
+left: 188;
+z-index: 2;
+}
+</style>
+</head>
+<body>
+<div id="loading">
+<div id="loadbar"></div>
+<div id="loadbarbg"></div>
+</div>
+<div class="background"></div>
+<div id="fps"></div>
+<div class="home">
+<span class="home-title">Pineapple Pen</span>
+<span class="title-high">H: </span>
+<span id="title-high"></span>
+<span id="instruction">Tap to<br>Start</span>
+<img id="volume" src="./assets/sound.png"></img>
+<img id="settings" src="./assets/settings.png"></img>
+<img id="shop" src="./assets/shop.jpg"></img>
+</div>
+<div class="game"></div>
+<span class="gameplay-title">Pineapple Pen</span>
+<div class="volumeMenu">
+<img class="back" src="./assets/back.png"></img>
+<br>
+<h1>Volume</h1>
+<br>
+<span>Music</span>
+<br>
+<input id="music" type="range" min="0" max="100" value="100"></input>
+<br>
+<span>SFX</span>
+<br>
+<input id="sfx" type="range" min="0" max="100" value="100"></input>
+</div>
+<div class="settingsMenu">
+<img class="back" src="./assets/back.png"></img>
+<br>
+<h1>Experimental features</h1>
+<br>
+<button id="theme">Change theme</button>
+<br>
+<button id="resetTheme">Reset theme</button>
+<br>
+<br>
+<span>Music Overdrive</span>
+<br>
+<input id="musicOverdrive" type="range" min="0" max="1000" value="100"></input>
+<br>
+<span>SFX Overdrive</span>
+<br>
+<input id="sfxOverdrive" type="range" min="0" max="1000" value="100"></input>
+</div>
+<div class="shopMenu">
+<img class="back" src="./assets/back.png"></img>
+<br>
+<h1>Shop</h1>
+<br>
+</div>
+<div class="pauseMenu">
+<img class="back" src="./assets/back.png"></img>
+<img class="exit" src="./assets/exit.png"></img>
+</div>
+<img id="pause" src="./assets/pause.png"></img>
+<div class="board">
+</div>
+<span class="title">Pineapple Pen</span>
+<div id="fruit">
+</div>
+<div id="pen">
+</div>
+<div id="shader">
+<div id="notification">Game Over</div>
+</div>
+<div class="score">
+<span>Score: </span>
+<span id="score">0</span>
+<br>
+<span>High: </span>
+<span id="high">0</span>
+<br>
+<span>Lives: </span>
+<span id="lives">3</span>
+</div>
+<script src="ppap.js">
+</script>
+</body>
+</html>

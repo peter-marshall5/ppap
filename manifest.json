@@ -1,0 +1,17 @@
+{
+   "app": {
+      "background": {
+         "scripts": [ "background.js" ]
+      }
+   },
+   "description": "",
+   "icons": {
+      "420": "icon.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmI4lQssSDTNySC/+1hiDdIAOM0wucEoLIjEEjpbKMIvDoukHycOdU8sNMIA3ER6176/ZbsY/clCE74xrVQHAUXWGhd3SqRGWA4wVLEyz+IxppOk9FWvo7HjHRLJNx7wLZt+Lo/yiWwtxMDJjLNiptPI076TOSdqjJRMDSj3e57k4/Ags5nE7Z1ybOYmE+sNKnQyyhTiCUlhZKKdYuDJkSw5RIhG9rstBRFQoGPXT//PXFyn7YsT4ioA+3x2msBbMy//l13m7aMgYz0Ne/PyRvUoUjD4/i1UZavYIMF1JZ/jEPFvgwVLaRMO2EJlMmGNy+43GKmWHNnJMBXn9zjNIDwIDAQAB",
+   "manifest_version": 2,
+   "name": "Pineapple Pen",
+   "permissions": [ "storage" ],
+   "short_name": "PPAP",
+   "version": "1.4"
+}
